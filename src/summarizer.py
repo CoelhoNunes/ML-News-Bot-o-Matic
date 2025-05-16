@@ -1,12 +1,16 @@
 # src/summarizer.py
 
+import logging
 from transformers import pipeline, AutoTokenizer
 import torch
 
+# Silence the “consider decreasing max_length” warnings
+logging.getLogger("transformers.tokenization_utils_base").setLevel(logging.ERROR)
+
 class Summarizer:
     def __init__(self):
-        # load tokenizer + model pipeline
         model_name = "sshleifer/distilbart-cnn-12-6"
+        # Load tokenizer & model pipeline
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.summarizer = pipeline(
             "summarization",
@@ -15,16 +19,30 @@ class Summarizer:
             device=torch.device("cpu").index if torch.cuda.is_available() else -1
         )
 
-    def summarize(self, text: str, max_length: int = 100, min_length: int = 30) -> str:
-        # Tokenize and truncate to the first 1024 tokens
-        tokens = self.tokenizer.encode(text, truncation=True, max_length=self.tokenizer.model_max_length)
-        truncated_text = self.tokenizer.decode(tokens, skip_special_tokens=True)
+    def summarize(self, text: str, min_ratio: float = 0.3) -> str:
+        """
+        Summarize `text`, allowing the summary length to scale with input length.
+        `min_ratio` is the minimum fraction of input tokens (e.g. 0.3 → 30%).
+        """
+        # 1) Tokenize and truncate input to model’s max
+        tokens = self.tokenizer.encode(
+            text,
+            truncation=True,
+            max_length=self.tokenizer.model_max_length
+        )
+        input_len = len(tokens)
 
-        # Summarize the (now-safe) text
+        # 2) Let the summary be as long as the input
+        max_len = input_len
+
+        # 3) Set a minimum summary length
+        min_len = max(1, int(max_len * min_ratio))
+
+        # 4) Run the summarization
         result = self.summarizer(
-            truncated_text,
-            max_length=max_length,
-            min_length=min_length,
-            truncation=True  # ensure no overflow in generation
+            text,
+            max_length=max_len,
+            min_length=min_len,
+            truncation=True
         )
         return result[0]["summary_text"].strip()
