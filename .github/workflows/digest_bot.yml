@@ -1,6 +1,6 @@
 name: ML Reddit Digest Bot
-
-on:
+# Name of APP
+on: 
   schedule:
     - cron: '0 */4 * * *'    # every 4 hours
 
