@@ -1,26 +1,24 @@
 name: ML Reddit Digest Bot
 
+# ← add this so the token can write
+permissions:
+  contents: write
+
 on:
   schedule:
     - cron: '*/5 * * * *'    # every 5 minutes UTC
-  workflow_dispatch:        # manual “Run workflow” button
+  workflow_dispatch:        # manual trigger
 
 jobs:
   run-and-commit:
     runs-on: ubuntu-latest
 
-    env:
-      REDDIT_USER_AGENT: reddit-yourbot-agent
-      SEARCH_QUERY: >-
-        AI OR artificial intelligence OR machine learning OR deep learning OR
-        reinforcement learning OR neural network OR NLP OR computer vision OR
-        robotics OR data science OR quantum computing OR research OR
-        tutorial OR jobs OR career OR interview OR challenge
-      SEARCH_LIMIT: '100'
-      TOP_COMMENTS: '5'
-
     steps:
       - uses: actions/checkout@v3
+        with:
+          # ensure the checkout action uses the same token
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0        # optional, so you have full history
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -33,11 +31,14 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run digest generator
+        env:
+          REDDIT_USER_AGENT: reddit-yourbot-agent
+          SEARCH_QUERY:      ${{ env.SEARCH_QUERY }}
+          SEARCH_LIMIT:      ${{ env.SEARCH_LIMIT }}
+          TOP_COMMENTS:      ${{ env.TOP_COMMENTS }}
         run: python src/digest_generator.py
 
       - name: Commit & push new files
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name  "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
