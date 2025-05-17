@@ -2,12 +2,25 @@ name: ML Reddit Digest Bot
 
 on:
   schedule:
-    - cron: '*/5 * * * *'    # every 5 minutes
-  workflow_dispatch:        # optional manual trigger
+    - cron: '*/5 * * * *'    # every 5 minutes UTC
+  workflow_dispatch:        # allows manual “Run workflow” button
 
 jobs:
   run-and-commit:
     runs-on: ubuntu-latest
+
+    env:
+      # your Reddit-API User-Agent (set this as a secret or plain text if you prefer)
+      REDDIT_USER_AGENT: reddit-yourbot-agent
+      # broad OR-chained query
+      SEARCH_QUERY: >-
+        AI OR artificial intelligence OR machine learning OR deep learning OR reinforcement learning
+        OR neural network OR NLP OR computer vision OR robotics OR data science OR quantum computing
+        OR quantum ML OR GAN OR transformer OR clustering OR classification OR regression OR optimization
+        OR anomaly detection OR tutorial OR research OR jobs OR career OR interview OR challenge
+      SEARCH_LIMIT: '100'     # deep fetch each run
+      TOP_COMMENTS: '5'       # comments per post
+
     steps:
       - uses: actions/checkout@v3
 
@@ -17,23 +30,19 @@ jobs:
           python-version: '3.10'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
       - name: Run digest generator
-        env:
-          REDDIT_USER_AGENT: ${{ secrets.REDDIT_USER_AGENT }}
-          SEARCH_QUERY:      ${{ secrets.SEARCH_QUERY }}
-          SEARCH_LIMIT:      ${{ secrets.SEARCH_LIMIT }}
-          TOP_COMMENTS:      ${{ secrets.TOP_COMMENTS }}
         run: python src/digest_generator.py
 
       - name: Commit & push new files
-        run: |
-          git config user.name  "${{ github.actor }}"
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
-          git add digests/*.md data/*.json
-          git commit -m "chore: add new digests" || echo "No changes to commit"
-          git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git add digests/*.md data/*.json data/seen_ids.json
+          git commit -m "chore: add new digests" || echo "No changes to commit"
+          git push
