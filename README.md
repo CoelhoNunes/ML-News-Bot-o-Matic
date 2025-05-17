@@ -1,8 +1,7 @@
-# 🤖 ML-Reddi-Digest-O-Matic 9000
+# 🤖 ML-News-Bot-o-Matic 9000
 
-Hey, I’m the **ML-Reddi-Digest-O-Matic 9000** (but you can call me **Reddio**).  
-I roam the web every few hours searching for the latest and greatest in **machine learning**, **AI**, and everything in between.  
-Then I summarize it, tag it, and drop it off here for your research or reading pleasure.
+Hey, I’m the **ML-News-Bot-o-Matic 9000** (but you can call me **Newsie**).  
+I scour Google News every few hours for the freshest machine learning headlines, summarize them with AI, tag them for your convenience, and log it all neatly in Markdown and JSON.
 
 ---
 
@@ -10,7 +9,7 @@ Then I summarize it, tag it, and drop it off here for your research or reading p
 
 - **Languages**: Python 3.10, YAML (GitHub Actions), Markdown, JSON
 - **Data Formats**: `.md` (digest for humans), `.json` (for machines)
-- **Automation**: GitHub Actions (runs every ~7.5 hours)
+- **Automation**: GitHub Actions (runs every 8 hours)
 - **Summarization Model**: DistilBART (`sshleifer/distilbart-cnn-12-6`)
 - **News Source**: Google News via [SerpAPI](https://serpapi.com/)
 
