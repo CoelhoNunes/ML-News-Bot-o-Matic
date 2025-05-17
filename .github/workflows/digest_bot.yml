@@ -2,7 +2,7 @@ name: ML Reddit Digest Bot
 
 on:
   schedule:
-    - cron: '0 */2 * * *'    # every 2 hours
+    - cron: '*/5 * * * *'    # every 5 minutes
   workflow_dispatch:        # optional manual trigger
 
 jobs:
