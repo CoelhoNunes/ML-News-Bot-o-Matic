@@ -4,32 +4,22 @@ import os
 import json
 from datetime import datetime
 from dotenv import load_dotenv
+import requests
 
-from reddit_client import RedditClient
 from summarizer import Summarizer
 
 load_dotenv()
 
-SUBREDDITS = [
-    "MachineLearning", "ArtificialIntelligence", "datascience", "technology", "AI_News",
-    "DeepLearning", "NeuralNetworks", "ReinforcementLearning", "MLJobs", "MLPapers",
-    "MLProjects", "MLTutorials", "DeepDream", "AIArt", "AI_Music", "AI_Video",
-    "AI_Design", "AI_Writing", "AI_Coding", "LearnMachineLearning", "LearnAI",
-    "AI_Courses", "AI_Books", "AI_Podcasts", "AI_Ethics", "AI_Safety", "AGI",
-    "Singularity", "Futurology", "Transhumanism", "AI_Policy", "AI_Law",
-    "AI_Philosophy", "TensorFlow", "PyTorch", "Keras", "ScikitLearn", "MLops",
-    "AI_Dev", "AI_Engineering", "AI_Hardware", "AI_Cloud", "AI_Startup",
-    "AI_Healthcare", "AI_Finance", "Robotics", "Automation", "AutonomousVehicles",
-    "NLP", "ComputerVision", "AI_GenerativeModels", "CognitiveScience", "Neuroscience",
-    "cnn", "foxnews", "worldnews", "news", "science", "technews"
-]
+NEWS_API_KEY = os.getenv("NEWS_API_KEY")
+SEARCH_QUERY = "machine learning OR artificial intelligence OR deep learning"
+NEWS_API_ENDPOINT = (
+    "https://newsapi.org/v2/everything?"
+    f"q={SEARCH_QUERY}&sortBy=publishedAt&language=en&pageSize=20&apiKey={NEWS_API_KEY}"
+)
 
 class DigestGenerator:
     def __init__(self):
-        self.reddit = RedditClient()
         self.summarizer = Summarizer()
-        self.top_comments = int(os.getenv("TOP_COMMENTS") or 5)
-        self.search_limit = int(os.getenv("SEARCH_LIMIT") or 100)
 
     def tag(self, summary: str):
         tags = []
@@ -46,9 +36,9 @@ class DigestGenerator:
 
     def run(self):
         ts = datetime.utcnow().strftime("%Y-%m-%d_%H-%M")
-
         os.makedirs("data", exist_ok=True)
         seen_path = "data/seen_ids.json"
+
         try:
             with open(seen_path, "r", encoding="utf-8") as f:
                 seen_ids = set(json.load(f))
@@ -57,38 +47,47 @@ class DigestGenerator:
 
         md_lines, records = [], []
 
-        for subreddit in SUBREDDITS:
-            posts = list(self.reddit.fetch_posts_by_subreddit(subreddit, limit=self.search_limit))
-            print(f"[{subreddit}] Found {len(posts)} posts")
+        try:
+            r = requests.get(NEWS_API_ENDPOINT, timeout=10)
+            r.raise_for_status()
+            articles = r.json().get("articles", [])
+        except Exception as e:
+            print(f"❌ Failed to fetch news: {e}")
+            return
 
-            for post in posts:
-                pid = post["id"]
-                if pid in seen_ids:
-                    print(f"Skipping seen: {pid}")
-                    continue
+        for article in articles:
+            url = article.get("url")
+            if url in seen_ids:
+                print(f"Skipping seen article: {url}")
+                continue
 
-                comments = self.reddit.fetch_top_comments(pid, limit=self.top_comments)
-                if not comments:
-                    print(f"⚠️ No comments for post {pid} ({post['title']})")
-                content = f"{post['title']}\n\n" + "\n\n".join(comments)
-                summary = self.summarizer.summarize(content)
-                tags = self.tag(summary)
+            title = article.get("title", "")
+            content = article.get("description", "") or article.get("content", "") or title
+            if not content:
+                continue
 
-                md_lines.append(
-                    f"## [{post['subreddit']}] {post['title']}\n\n"
-                    f"{summary}\n\n"
-                    f"_Tags: {', '.join(tags)}_\n\n---\n"
-                )
-                records.append({
-                    "timestamp": ts,
-                    "subreddit": post["subreddit"],
-                    "post_id": pid,
-                    "title": post["title"],
-                    "comments": comments,
-                    "summary": summary,
-                    "tags": tags
-                })
-                seen_ids.add(pid)
+            summary = self.summarizer.summarize(content)
+            tags = self.tag(summary)
+
+            md_lines.append(
+                f"## [{article['source']['name']}] {title}\n\n"
+                f"{summary}\n\n"
+                f"[Read more]({url})\n\n"
+                f"_Tags: {', '.join(tags)}_\n\n---\n"
+            )
+            records.append({
+                "timestamp": ts,
+                "source": article['source']['name'],
+                "title": title,
+                "url": url,
+                "summary": summary,
+                "tags": tags
+            })
+            seen_ids.add(url)
+
+        if not records:
+            print("⚠️ No new articles to save.")
+            return
 
         os.makedirs("digests", exist_ok=True)
         with open(f"digests/{ts}.md", "w", encoding="utf-8") as f:
