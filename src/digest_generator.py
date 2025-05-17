@@ -12,7 +12,7 @@ load_dotenv()
 
 SERPAPI_KEY = os.getenv("SERPAPI_KEY")
 SEARCH_QUERY = "machine learning OR artificial intelligence OR deep learning OR LLM OR large language model OR GPT OR NLP OR natural language " \
-                "processing OR quantum computing OR generative AI OR ML algorithms OR reinforcement learning OR transformers"
+               "processing OR quantum computing OR generative AI OR ML algorithms OR reinforcement learning OR transformers"
 
 SERPAPI_ENDPOINT = (
     f"https://serpapi.com/search.json?engine=google_news&q={SEARCH_QUERY}&hl=en&gl=us&api_key={SERPAPI_KEY}"
@@ -23,6 +23,8 @@ class DigestGenerator:
         self.summarizer = Summarizer()
 
     def tag(self, summary: str):
+        if not summary.strip():
+            return ["untagged"]
         tags = []
         txt = summary.lower()
         if any(k in txt for k in ("paper", "research")):
@@ -47,6 +49,7 @@ class DigestGenerator:
             seen_ids = set()
 
         md_lines, records = [], []
+        processed_count = 0
 
         try:
             r = requests.get(SERPAPI_ENDPOINT, timeout=10)
@@ -65,21 +68,20 @@ class DigestGenerator:
                 continue
 
             if url in seen_ids:
-                print(f"🔁 Skipping seen article: {url}")
                 continue
 
             content = article.get("snippet", "") or title
             if not content:
-                print(f"⚠️ Skipping article due to missing content: {title[:60]}")
                 continue
 
             print(f"➡️ Processing: {title[:60]}...")
+            processed_count += 1
 
             try:
                 summary = self.summarizer.summarize(content)
             except Exception as e:
                 print(f"❌ Summarizer failed for {url}: {e}")
-                continue
+                summary = content  # fallback
 
             tags = self.tag(summary)
 
@@ -113,7 +115,8 @@ class DigestGenerator:
         with open(seen_path, "w", encoding="utf-8") as f:
             json.dump(list(seen_ids), f)
 
-        print(f"✅ Saved {len(records)} new article(s) to data/{ts}.json")
+        print(f"✅ Processed {processed_count} articles")
+        print(f"✅ Saved {len(records)} new article(s) to data/{ts}.json and digests/{ts}.md")
 
 if __name__ == "__main__":
     DigestGenerator().run()
