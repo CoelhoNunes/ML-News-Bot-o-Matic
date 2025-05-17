@@ -1,56 +1,51 @@
-# ML-Reddi-Digest-O-Matic 9000
+# 🤖 ML-Reddi-Digest-O-Matic 9000
 
-Hey, I’m the ML-Reddi-Digest-O-Matic 9000 (but you can call me **Reddio**). I’m built in **Python 3.10** with a touch of **YAML** (for GitHub Actions) and I use several key libraries to:
-
-- Scrape & search Reddit/Pushshift  
-- Summarize text offline  
-- Serve a simple web API  
-- Automate everything in the cloud
+Hey, I’m the **ML-Reddi-Digest-O-Matic 9000** (but you can call me **Reddio**).  
+I roam the web every few hours searching for the latest and greatest in **machine learning**, **AI**, and everything in between.  
+Then I summarize it, tag it, and drop it off here for your research or reading pleasure.
 
 ---
 
 ## 🛠️ Tech Stack & Languages
 
-- **Languages:** Python 3.10, YAML (GitHub Actions), Markdown, JSON  
-- **Data Formats:** Markdown (`.md`), JSON (`.json`)  
-- **CI/CD:** GitHub Actions  
+- **Languages**: Python 3.10, YAML (GitHub Actions), Markdown, JSON
+- **Data Formats**: `.md` (digest for humans), `.json` (for machines)
+- **Automation**: GitHub Actions (runs every ~7.5 hours)
+- **Summarization Model**: DistilBART (`sshleifer/distilbart-cnn-12-6`)
+- **News Source**: Google News via [SerpAPI](https://serpapi.com/)
 
 ---
 
-## 📦 Python Packages
+## 📦 Python Packages Used
 
-- `requests` – HTTP client for Reddit & Pushshift  
-- `transformers` – HuggingFace pipelines for summarization  
-- `torch` – backend for the summarization model  
-- `fastapi` – serve digests via REST API  
-- `uvicorn` – ASGI server for FastAPI  
-- `python-dotenv` – load environment variables  
-- `pydantic` – request/response validation in FastAPI  
-
----
-
-## What I Do
-
-1. **Search** Reddit for your ML keywords via Pushshift’s API  
-2. **Fetch** each post’s top comments from Reddit’s JSON endpoints  
-3. **Summarize** everything offline with DistilBART  
-4. **Tag** each summary (research, job advice, news, tools, other)  
-5. **Save**:
-   - `digests/YYYY-MM-DD_HH-mm.md` (human-readable)  
-   - `data/YYYY-MM-DD_HH-mm.json` (machine-readable)  
-6. **Automate**: run every 4 hours via GitHub Actions  
-7. **Serve**: REST endpoint at `/api/digests` for easy data-science ingestion  
+| Package         | Purpose                                     |
+|-----------------|---------------------------------------------|
+| `requests`      | Querying Google News via SerpAPI            |
+| `transformers`  | HuggingFace pipeline for summarization      |
+| `torch`         | Backend for model acceleration (CPU/GPU)    |
+| `python-dotenv` | Load API keys from `.env`                   |
+| `logging`       | Keep the console calm and clean             |
 
 ---
 
-## 📥 Installation & Setup
+## ⚙️ What I Do
+
+1. **Search Google News** for ML-related topics  
+2. **Summarize headlines** with DistilBART  
+3. **Tag** them as research, news, tools, job advice, or other  
+4. **Save summaries** as:
+   - `digests/YYYY-MM-DD_HH-mm.md` (for humans)
+   - `data/YYYY-MM-DD_HH-mm.json` (for machines)
+5. 🔁 **Auto-run every 8 hours** via GitHub Actions
+
+---
+
+## 🔌 Setup & Installation
 
 ```bash
-git clone https://github.com/you/ML-Reddit-Digest-Bot.git
+git clone https://github.com/CoelhoNunes/ML-Reddit-Digest-Bot.git
 cd ML-Reddit-Digest-Bot
 
 python3 -m venv venv
-source venv/bin/activate      # macOS/Linux
-.\venv\Scripts\Activate       # Windows
-
-pip install -r requirements.txt
+source venv/bin/activate       # macOS/Linux
+.\venv\Scripts\activate        # Windows
