@@ -58,3 +58,15 @@ class RedditClient:
             return [c["data"]["body"] for c in children if c["kind"] == "t1"][:limit]
         except:
             return []
+
+    def fetch_posts_by_subreddit(self, subreddit: str, limit: int = 25):
+        url = f"https://www.reddit.com/r/{subreddit}/new.json?limit={limit}"
+        try:
+            r = requests.get(url, headers=self.headers, timeout=10)
+            r.raise_for_status()
+            children = r.json().get("data", {}).get("children", [])
+            for c in children:
+                d = c["data"]
+                yield {"id": d["id"], "title": d["title"], "subreddit": subreddit}
+        except requests.RequestException:
+            return []
