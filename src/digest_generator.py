@@ -34,10 +34,14 @@ class DigestGenerator:
     def tag(self, summary: str):
         tags = []
         txt = summary.lower()
-        if any(k in txt for k in ("paper", "research")):    tags.append("research")
-        if "job" in txt:                                    tags.append("job advice")
-        if any(k in txt for k in ("release", "update", "breaking")): tags.append("news")
-        if any(k in txt for k in ("library", "tutorial")):  tags.append("tools")
+        if any(k in txt for k in ("paper", "research")):
+            tags.append("research")
+        if "job" in txt:
+            tags.append("job advice")
+        if any(k in txt for k in ("release", "update", "breaking")):
+            tags.append("news")
+        if any(k in txt for k in ("library", "tutorial")):
+            tags.append("tools")
         return tags or ["other"]
 
     def run(self):
@@ -54,13 +58,18 @@ class DigestGenerator:
         md_lines, records = [], []
 
         for subreddit in SUBREDDITS:
-            posts = self.reddit.fetch_posts_by_subreddit(subreddit, limit=self.search_limit)
+            posts = list(self.reddit.fetch_posts_by_subreddit(subreddit, limit=self.search_limit))
+            print(f"[{subreddit}] Found {len(posts)} posts")
+
             for post in posts:
                 pid = post["id"]
                 if pid in seen_ids:
+                    print(f"Skipping seen: {pid}")
                     continue
 
                 comments = self.reddit.fetch_top_comments(pid, limit=self.top_comments)
+                if not comments:
+                    print(f"⚠️ No comments for post {pid} ({post['title']})")
                 content = f"{post['title']}\n\n" + "\n\n".join(comments)
                 summary = self.summarizer.summarize(content)
                 tags = self.tag(summary)

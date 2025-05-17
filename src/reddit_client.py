@@ -59,7 +59,6 @@ class RedditClient:
             return []
 
     def fetch_posts_by_subreddit(self, subreddit: str, limit: int = 25, max_days_back: int = 7):
-        posts_collected = []
         now = datetime.utcnow()
 
         for days_back in range(max_days_back):
@@ -73,15 +72,13 @@ class RedditClient:
                 r = requests.get(url, timeout=10)
                 r.raise_for_status()
                 data = r.json().get("data", [])
-                for item in data:
-                    posts_collected.append({
-                        "id": item.get("id"),
-                        "title": item.get("title"),
-                        "subreddit": subreddit
-                    })
-                if posts_collected:
+                if data:
+                    for item in data:
+                        yield {
+                            "id": item.get("id"),
+                            "title": item.get("title"),
+                            "subreddit": subreddit
+                        }
                     break  # Stop as soon as we find posts for any past day
             except requests.RequestException:
                 continue
-
-        return posts_collected
