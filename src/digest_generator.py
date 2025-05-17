@@ -35,7 +35,19 @@ class DigestGenerator:
         # Load search parameters from environment (with defaults)
         query = os.environ.get(
             "SEARCH_QUERY",
-            "machine learning OR jobs OR career advice OR problems OR algorithms OR tutorials OR research"
+            (
+                "AI OR artificial intelligence OR machine learning OR deep learning OR reinforcement learning OR supervised learning "
+                "OR unsupervised learning OR semi-supervised OR self-supervised OR few-shot learning OR zero-shot learning OR transfer learning "
+                "OR meta-learning OR neural network OR CNN OR RNN OR LSTM OR GRU OR transformer OR attention OR GPT OR BERT OR diffusion model "
+                "OR GAN OR VAE OR autoencoder OR clustering OR K-means OR DBSCAN OR classification OR regression OR decision tree OR random forest "
+                "OR gradient boosting OR XGBoost OR LightGBM OR CatBoost OR SVM OR KNN OR anomaly detection OR time series OR forecasting OR optimization "
+                "OR genetic algorithm OR evolutionary algorithm OR fuzzy logic OR Bayesian OR probabilistic OR graph neural network OR GNN "
+                "OR federated learning OR MLOps OR model deployment OR Docker OR Kubernetes OR edge AI OR TinyML OR IoT OR robotics OR computer vision "
+                "OR NLP OR speech recognition OR audio processing OR recommender OR collaborative filtering OR explainable AI OR interpretability OR fairness "
+                "OR bias OR ethics OR synthetic data OR data augmentation OR feature engineering OR data pipeline OR quantum computing OR quantum ML "
+                "OR neuromorphic computing OR hardware acceleration OR GPU OR TPU OR FPGA OR HPC OR jobs OR career OR interview OR tutorial OR research "
+                "OR challenge OR problem"
+            )
         )
         limit = int(os.environ.get("SEARCH_LIMIT", self.search_limit))
 
