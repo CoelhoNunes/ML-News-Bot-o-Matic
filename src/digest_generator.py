@@ -52,22 +52,35 @@ class DigestGenerator:
             r = requests.get(SERPAPI_ENDPOINT, timeout=10)
             r.raise_for_status()
             articles = r.json().get("news_results", [])
+            print(f"✅ Retrieved {len(articles)} articles from SerpAPI")
         except Exception as e:
             print(f"❌ Failed to fetch news from SerpAPI: {e}")
             return
 
         for article in articles:
             url = article.get("link")
-            if url in seen_ids:
-                print(f"Skipping seen article: {url}")
+            title = article.get("title", "")
+            if not url or not title:
+                print("⚠️ Skipping article with missing title or URL")
                 continue
 
-            title = article.get("title", "")
+            if url in seen_ids:
+                print(f"🔁 Skipping seen article: {url}")
+                continue
+
             content = article.get("snippet", "") or title
             if not content:
+                print(f"⚠️ Skipping article due to missing content: {title[:60]}")
                 continue
 
-            summary = self.summarizer.summarize(content)
+            print(f"➡️ Processing: {title[:60]}...")
+
+            try:
+                summary = self.summarizer.summarize(content)
+            except Exception as e:
+                print(f"❌ Summarizer failed for {url}: {e}")
+                continue
+
             tags = self.tag(summary)
 
             md_lines.append(
@@ -99,6 +112,8 @@ class DigestGenerator:
 
         with open(seen_path, "w", encoding="utf-8") as f:
             json.dump(list(seen_ids), f)
+
+        print(f"✅ Saved {len(records)} new article(s) to data/{ts}.json")
 
 if __name__ == "__main__":
     DigestGenerator().run()
