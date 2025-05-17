@@ -1,47 +1,55 @@
+# .github/workflows/digest_bot.yml
 name: ML Reddit Digest Bot
 
-# ← add this so the token can write
+# allow the built-in token to push back
 permissions:
   contents: write
 
 on:
   schedule:
-    - cron: '*/5 * * * *'    # every 5 minutes UTC
-  workflow_dispatch:        # manual trigger
+    - cron: '*/5 * * * *'     # every 5 minutes UTC
+  workflow_dispatch:         # manual trigger
 
 jobs:
   run-and-commit:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      # 1) checkout code using your PAT so commits count as you
+      - name: Checkout with PAT
+        uses: actions/checkout@v3
         with:
-          # ensure the checkout action uses the same token
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0        # optional, so you have full history
+          token: ${{ secrets.PAT_TOKEN }}
+          fetch-depth: 0
 
+      # 2) set up Python
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
+      # 3) install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      # 4) run your digest generator
       - name: Run digest generator
+        run: python src/digest_generator.py
         env:
           REDDIT_USER_AGENT: reddit-yourbot-agent
-          SEARCH_QUERY:      ${{ env.SEARCH_QUERY }}
-          SEARCH_LIMIT:      ${{ env.SEARCH_LIMIT }}
-          TOP_COMMENTS:      ${{ env.TOP_COMMENTS }}
-        run: python src/digest_generator.py
+          SEARCH_QUERY:      ${{ secrets.SEARCH_QUERY }}
+          SEARCH_LIMIT:      ${{ secrets.SEARCH_LIMIT }}
+          TOP_COMMENTS:      ${{ secrets.TOP_COMMENTS }}
 
-      - name: Commit & push new files
+      # 5) commit & push new files as your account
+      - name: Commit & push as CoelhoNunes
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-          git config user.name  "${{ github.actor }}"
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git config user.name  "CoelhoNunes"
+          git config user.email "CoelhoNunes@users.noreply.github.com"
           git add digests/*.md data/*.json data/seen_ids.json
           git commit -m "chore: add new digests" || echo "No changes to commit"
           git push
