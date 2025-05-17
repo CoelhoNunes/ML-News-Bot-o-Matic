@@ -7,6 +7,12 @@ from datetime import datetime
 from reddit_client import RedditClient
 from summarizer import Summarizer
 
+import os
+from dotenv import load_dotenv
+
+# pull in your .env into os.environ
+load_dotenv()
+
 class DigestGenerator:
     def __init__(self, top_comments=3, search_limit=25):
         self.reddit = RedditClient()
@@ -25,7 +31,10 @@ class DigestGenerator:
 
     def run(self):
         # load search query & limits from env (or use defaults)
-        query = os.environ.get("SEARCH_QUERY", "machine learning")
+        query = os.environ.get(
+            "SEARCH_QUERY",
+            "machine learning OR jobs OR career advice OR problems OR algorithms OR tutorials OR research"
+        )
         limit = int(os.environ.get("SEARCH_LIMIT", self.search_limit))
 
         ts = datetime.utcnow().strftime("%Y-%m-%d_%H-%M")
