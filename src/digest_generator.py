@@ -10,11 +10,12 @@ from summarizer import Summarizer
 
 load_dotenv()
 
-NEWS_API_KEY = os.getenv("NEWS_API_KEY")
-SEARCH_QUERY = "machine learning OR artificial intelligence OR deep learning"
-NEWS_API_ENDPOINT = (
-    "https://newsapi.org/v2/everything?"
-    f"q={SEARCH_QUERY}&sortBy=publishedAt&language=en&pageSize=20&apiKey={NEWS_API_KEY}"
+SERPAPI_KEY = os.getenv("SERPAPI_KEY")
+SEARCH_QUERY = "machine learning OR artificial intelligence OR deep learning OR LLM OR large language model OR GPT OR NLP OR natural language " \
+                "processing OR quantum computing OR generative AI OR ML algorithms OR reinforcement learning OR transformers"
+
+SERPAPI_ENDPOINT = (
+    f"https://serpapi.com/search.json?engine=google_news&q={SEARCH_QUERY}&hl=en&gl=us&api_key={SERPAPI_KEY}"
 )
 
 class DigestGenerator:
@@ -48,21 +49,21 @@ class DigestGenerator:
         md_lines, records = [], []
 
         try:
-            r = requests.get(NEWS_API_ENDPOINT, timeout=10)
+            r = requests.get(SERPAPI_ENDPOINT, timeout=10)
             r.raise_for_status()
-            articles = r.json().get("articles", [])
+            articles = r.json().get("news_results", [])
         except Exception as e:
-            print(f"❌ Failed to fetch news: {e}")
+            print(f"❌ Failed to fetch news from SerpAPI: {e}")
             return
 
         for article in articles:
-            url = article.get("url")
+            url = article.get("link")
             if url in seen_ids:
                 print(f"Skipping seen article: {url}")
                 continue
 
             title = article.get("title", "")
-            content = article.get("description", "") or article.get("content", "") or title
+            content = article.get("snippet", "") or title
             if not content:
                 continue
 
@@ -70,14 +71,14 @@ class DigestGenerator:
             tags = self.tag(summary)
 
             md_lines.append(
-                f"## [{article['source']['name']}] {title}\n\n"
+                f"## [{article.get('source', {}).get('name', 'Unknown')}] {title}\n\n"
                 f"{summary}\n\n"
                 f"[Read more]({url})\n\n"
                 f"_Tags: {', '.join(tags)}_\n\n---\n"
             )
             records.append({
                 "timestamp": ts,
-                "source": article['source']['name'],
+                "source": article.get('source', {}).get('name', 'Unknown'),
                 "title": title,
                 "url": url,
                 "summary": summary,
