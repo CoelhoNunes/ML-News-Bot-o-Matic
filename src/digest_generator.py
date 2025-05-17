@@ -103,6 +103,10 @@ class DigestGenerator:
 
         if not records:
             print("⚠️ No new articles to save.")
+            # Still touch the seen file to force a git change
+            with open(seen_path, "w", encoding="utf-8") as f:
+                json.dump(list(seen_ids), f, indent=2)
+            print("📦 Updated seen_ids.json to ensure GitHub push")
             return
 
         os.makedirs("digests", exist_ok=True)
@@ -113,10 +117,9 @@ class DigestGenerator:
             json.dump(records, f, indent=2, ensure_ascii=False)
 
         with open(seen_path, "w", encoding="utf-8") as f:
-            json.dump(list(seen_ids), f)
+            json.dump(list(seen_ids), f, indent=2)
 
-        print(f"✅ Processed {processed_count} articles")
-        print(f"✅ Saved {len(records)} new article(s) to data/{ts}.json and digests/{ts}.md")
+        print(f"✅ Saved {len(records)} new article(s) to data/{ts}.json")
 
 if __name__ == "__main__":
     DigestGenerator().run()
