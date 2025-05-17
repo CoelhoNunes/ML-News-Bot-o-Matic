@@ -28,7 +28,7 @@ class DigestGenerator:
     def __init__(self):
         self.reddit = RedditClient()
         self.summarizer = Summarizer()
-        self.top_comments = int(os.getenv("TOP_COMMENTS", 5))
+        self.top_comments = int(os.getenv("TOP_COMMENTS") or 5)
         self.search_limit = int(os.getenv("SEARCH_LIMIT", 100))
 
     def tag(self, summary: str):
