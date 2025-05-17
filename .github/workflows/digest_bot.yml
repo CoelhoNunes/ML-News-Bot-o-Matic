@@ -43,6 +43,8 @@ jobs:
         run: |
           git config user.name  "CoelhoNunes"
           git config user.email "CoelhoNunes@users.noreply.github.com"
-          git add digests/*.md data/*.json data/seen_ids.json
+          git add digests/*.md
+          if compgen -G "data/*.json" > /dev/null; then git add data/*.json; fi
+          if [ -f data/seen_ids.json ]; then git add data/seen_ids.json; fi
           git commit -m "chore: add new digests" || echo "No changes to commit"
           git push
