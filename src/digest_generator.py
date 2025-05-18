@@ -2,6 +2,7 @@
 
 import os
 import json
+import time
 from datetime import datetime
 from dotenv import load_dotenv
 import requests
@@ -11,22 +12,33 @@ from summarizer import Summarizer
 load_dotenv()
 
 SERPAPI_KEY = os.getenv("SERPAPI_KEY")
-SEARCH_QUERY = "machine learning OR artificial intelligence OR deep learning OR LLM OR large language model OR GPT OR NLP OR natural language " \
-               "processing OR quantum computing OR generative AI OR ML algorithms OR reinforcement learning OR transformers"
 
-SERPAPI_ENDPOINT = (
-    f"https://serpapi.com/search.json?engine=google_news&q={SEARCH_QUERY}&hl=en&gl=us&api_key={SERPAPI_KEY}"
-)
+BASE_QUERY = "machine learning OR artificial intelligence OR deep learning OR LLM OR large language model OR GPT OR NLP OR natural language processing OR quantum computing OR generative AI OR ML algorithms OR reinforcement learning OR transformers"
 
 class DigestGenerator:
     def __init__(self):
         self.summarizer = Summarizer()
+        self.timestamp = datetime.utcnow().strftime("%Y-%m-%d_%H-%M")
+        self.seen_path = "data/seen_ids.json"
+        self.records = []
+        self.seen_ids = self.load_seen_ids()
+
+    def load_seen_ids(self):
+        try:
+            with open(self.seen_path, "r", encoding="utf-8") as f:
+                return set(json.load(f))
+        except Exception:
+            return set()
+
+    def save_seen_ids(self):
+        with open(self.seen_path, "w", encoding="utf-8") as f:
+            json.dump(list(self.seen_ids), f, indent=2)
 
     def tag(self, summary: str):
         if not summary.strip():
             return ["untagged"]
-        tags = []
         txt = summary.lower()
+        tags = []
         if any(k in txt for k in ("paper", "research")):
             tags.append("research")
         if "job" in txt:
@@ -37,89 +49,124 @@ class DigestGenerator:
             tags.append("tools")
         return tags or ["other"]
 
-    def run(self):
-        ts = datetime.utcnow().strftime("%Y-%m-%d_%H-%M")
-        os.makedirs("data", exist_ok=True)
-        seen_path = "data/seen_ids.json"
-
+    def query_serpapi(self, query, tbs=None):
+        base_url = f"https://serpapi.com/search.json?engine=google_news&q={query}&hl=en&gl=us&api_key={SERPAPI_KEY}"
+        if tbs:
+            base_url += f"&tbs={tbs}"
         try:
-            with open(seen_path, "r", encoding="utf-8") as f:
-                seen_ids = set(json.load(f))
-        except (FileNotFoundError, json.JSONDecodeError):
-            seen_ids = set()
-
-        md_lines, records = [], []
-        processed_count = 0
-
-        try:
-            r = requests.get(SERPAPI_ENDPOINT, timeout=10)
+            r = requests.get(base_url, timeout=10)
             r.raise_for_status()
-            articles = r.json().get("news_results", [])
-            print(f"✅ Retrieved {len(articles)} articles from SerpAPI")
+            return r.json().get("news_results", [])
         except Exception as e:
-            print(f"❌ Failed to fetch news from SerpAPI: {e}")
+            print(f"❌ Request failed: {e}")
+            return []
+
+    def get_unique_articles(self):
+        tries = 0
+        alternate_tbs = [None, "qdr:d", "qdr:w", "qdr:m"]
+        queries = [BASE_QUERY, BASE_QUERY + " AND AI", BASE_QUERY + " AND ML"]
+
+        while tries < 5:
+            for query in queries:
+                for tbs in alternate_tbs:
+                    print(f"🔍 Trying query: {query[:50]}... | tbs={tbs}")
+                    articles = self.query_serpapi(query, tbs)
+                    for article in articles:
+                        url = article.get("link")
+                        title = article.get("title", "")
+                        if not url or not title or url in self.seen_ids:
+                            continue
+
+                        snippet = article.get("snippet", "") or title
+                        try:
+                            summary = self.summarizer.summarize(snippet)
+                        except Exception:
+                            summary = snippet
+
+                        tags = self.tag(summary)
+                        self.records.append({
+                            "timestamp": self.timestamp,
+                            "source": article.get('source', {}).get('name', 'Unknown'),
+                            "title": title,
+                            "url": url,
+                            "summary": summary,
+                            "tags": tags
+                        })
+                        self.seen_ids.add(url)
+
+                        if len(self.records) >= 5:
+                            return
+
+            tries += 1
+            print("♻️ Retrying in 5 seconds for more results...")
+            time.sleep(5)
+
+    def get_huggingface_models(self, limit=5):
+        print("🤖 Fetching Hugging Face trending models...")
+        try:
+            r = requests.get("https://huggingface.co/api/models?sort=likes", timeout=10)
+            r.raise_for_status()
+            models = r.json()[:limit]
+        except Exception as e:
+            print(f"❌ Failed to fetch Hugging Face models: {e}")
             return
 
-        for article in articles:
-            url = article.get("link")
-            title = article.get("title", "")
-            if not url or not title:
-                print("⚠️ Skipping article with missing title or URL")
+        for model in models:
+            model_id = model.get("id")
+            model_url = f"https://huggingface.co/{model_id}"
+            if model_url in self.seen_ids:
                 continue
 
-            if url in seen_ids:
-                continue
+            pipeline_tag = model.get("pipeline_tag", "N/A")
+            downloads = model.get("downloads", "Unknown")
+            last_modified = model.get("lastModified", "Unknown")
 
-            content = article.get("snippet", "") or title
-            if not content:
-                continue
-
-            print(f"➡️ Processing: {title[:60]}...")
-            processed_count += 1
-
-            try:
-                summary = self.summarizer.summarize(content)
-            except Exception as e:
-                print(f"❌ Summarizer failed for {url}: {e}")
-                summary = content  # fallback
-
-            tags = self.tag(summary)
-
-            md_lines.append(
-                f"## [{article.get('source', {}).get('name', 'Unknown')}] {title}\n\n"
-                f"{summary}\n\n"
-                f"[Read more]({url})\n\n"
-                f"_Tags: {', '.join(tags)}_\n\n---\n"
+            summary = (
+                f"🔥 Pipeline: {pipeline_tag}\n"
+                f"⬇️ Downloads: {downloads}\n"
+                f"🕒 Last updated: {last_modified}"
             )
-            records.append({
-                "timestamp": ts,
-                "source": article.get('source', {}).get('name', 'Unknown'),
-                "title": title,
-                "url": url,
-                "summary": summary,
-                "tags": tags
-            })
-            seen_ids.add(url)
 
-        if not records:
-            print("⚠️ No new articles to save.")
-            # Still touch the seen file to force a git change
-            with open(seen_path, "w", encoding="utf-8") as f:
-                json.dump(list(seen_ids), f, indent=2)
-            print("📦 Updated seen_ids.json to ensure GitHub push")
+            self.records.append({
+                "timestamp": self.timestamp,
+                "source": "Hugging Face",
+                "title": model_id,
+                "url": model_url,
+                "summary": summary,
+                "tags": ["huggingface", "model", pipeline_tag]
+            })
+            self.seen_ids.add(model_url)
+
+        print(f"✅ Added {len(models)} Hugging Face models to the digest.")
+
+    def save_digest(self):
+        if not self.records:
+            print("❌ No records to save.")
             return
 
         os.makedirs("digests", exist_ok=True)
-        with open(f"digests/{ts}.md", "w", encoding="utf-8") as f:
-            f.writelines(md_lines)
+        os.makedirs("data", exist_ok=True)
 
-        with open(f"data/{ts}.json", "w", encoding="utf-8") as f:
-            json.dump(records, f, indent=2, ensure_ascii=False)
+        md_path = f"digests/{self.timestamp}.md"
+        with open(md_path, "w", encoding="utf-8") as f:
+            for item in self.records:
+                f.write(
+                    f"## [{item['source']}] {item['title']}\n\n"
+                    f"{item['summary']}\n\n"
+                    f"[Read more]({item['url']})\n\n"
+                    f"_Tags: {', '.join(item['tags'])}_\n\n---\n"
+                )
 
-        with open(seen_path, "w", encoding="utf-8") as f:
-            json.dump(list(seen_ids), f, indent=2)
+        with open(f"data/{self.timestamp}.json", "w", encoding="utf-8") as f:
+            json.dump(self.records, f, indent=2, ensure_ascii=False)
 
-        print(f"✅ Saved {len(records)} new article(s) to data/{ts}.json")
+        self.save_seen_ids()
+        print(f"✅ Saved {len(self.records)} new item(s).")
+
+    def run(self):
+        self.get_unique_articles()
+        self.get_huggingface_models(limit=5)
+        self.save_digest()
 
 if __name__ == "__main__":
     DigestGenerator().run()
