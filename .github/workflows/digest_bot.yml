@@ -42,10 +42,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-          git config user.name  "CoelhoNunes"
-          git config user.email "action@github.com"
+          git config user.name "CoelhoNunes"
+          git config user.email "danunesc@gmail.com"
           git fetch origin master
           git reset --soft origin/master
           git add .
-          git diff --cached --quiet || git commit -m "✅ New digest: $(date -u)"
+          git diff --cached --quiet || git commit -m "New digest: $(date -u)"
           git push
