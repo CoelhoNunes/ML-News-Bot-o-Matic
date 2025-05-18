@@ -24,7 +24,7 @@ def get_digests(
     if date:
         records = [r for r in records if r["timestamp"].startswith(date)]
     if subreddit:
-        records = [r for r in records if r["subreddit"].lower() == subreddit.lower()]
+        records = [r for r in records if r.get("subreddit", "").lower() == subreddit.lower()]
     if tag:
         records = [r for r in records if tag.lower() in (t.lower() for t in r["tags"])]
     return {"total": len(records), "items": records[offset : offset + limit]}
