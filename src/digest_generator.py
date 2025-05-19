@@ -1,19 +1,20 @@
-# src/digest_generator.py
-
 import os
 import json
 import time
 from datetime import datetime
 from dotenv import load_dotenv
 import requests
-
+import random
 from summarizer import Summarizer
 
 load_dotenv()
 
 SERPAPI_KEY = os.getenv("SERPAPI_KEY")
 
-BASE_QUERY = "machine learning OR artificial intelligence OR deep learning OR LLM OR large language model OR GPT OR NLP OR natural language processing OR quantum computing OR generative AI OR ML algorithms OR reinforcement learning OR transformers"
+BASE_QUERY = (
+    "machine learning OR artificial intelligence OR deep learning OR LLM OR large language model OR GPT OR NLP OR "
+    "natural language processing OR quantum computing OR generative AI OR ML algorithms OR reinforcement learning OR transformers"
+)
 
 class DigestGenerator:
     def __init__(self):
@@ -139,13 +140,42 @@ class DigestGenerator:
 
         print(f"✅ Added {len(models)} Hugging Face models to the digest.")
 
-    def save_digest(self):
-        if not self.records:
-            print("❌ No records to save.")
+    def fallback_with_old_data(self, count=5):
+        print("🔁 No new data. Re-using old unseen records.")
+        all_data_files = [
+            os.path.join("data", f) for f in os.listdir("data")
+            if f.endswith(".json") and not f.startswith("dummy")
+        ]
+        past_items = []
+        for file_path in all_data_files:
+            with open(file_path, "r", encoding="utf-8") as f:
+                items = json.load(f)
+                for item in items:
+                    if item["url"] not in self.seen_ids:
+                        past_items.append(item)
+
+        if not past_items:
+            print("⚠️ No past data available to re-use.")
             return
 
+        sampled = random.sample(past_items, min(count, len(past_items)))
+        for item in sampled:
+            item["timestamp"] = self.timestamp
+            self.records.append(item)
+            self.seen_ids.add(item["url"])
+
+        print(f"✅ Fallback reused {len(sampled)} past items.")
+
+    def save_digest(self):
         os.makedirs("digests", exist_ok=True)
         os.makedirs("data", exist_ok=True)
+
+        if not self.records:
+            self.fallback_with_old_data()
+
+        if not self.records:
+            print("❌ Still no records after fallback. Exiting.")
+            return
 
         md_path = f"digests/{self.timestamp}.md"
         with open(md_path, "w", encoding="utf-8") as f:
@@ -161,7 +191,7 @@ class DigestGenerator:
             json.dump(self.records, f, indent=2, ensure_ascii=False)
 
         self.save_seen_ids()
-        print(f"✅ Saved {len(self.records)} new item(s).")
+        print(f"✅ Saved {len(self.records)} item(s).")
 
     def run(self):
         self.get_unique_articles()

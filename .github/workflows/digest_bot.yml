@@ -47,8 +47,6 @@ jobs:
         run: |
           git config user.name "CoelhoNunes"
           git config user.email "danunesc@gmail.com"
-          git fetch origin master
-          git reset --soft origin/master
           git add .
-          git diff --cached --quiet || git commit -m "New digest: $(date -u)"
+          git commit -m "🤖 New digest run: $(date -u)" || echo "🟡 Nothing to commit"
           git push
