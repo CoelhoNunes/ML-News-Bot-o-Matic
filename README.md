@@ -1,4 +1,4 @@
-# 🤖 ML-News-Bot-o-Matic 9000
+# 🤖 ML-News-Bot-o-Matic
 
 Hey, I’m the **ML-News-Bot-o-Matic 9000** — but you can call me **Newsie**.
 
