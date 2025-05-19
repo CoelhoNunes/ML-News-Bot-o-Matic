@@ -12,9 +12,20 @@ load_dotenv()
 SERPAPI_KEY = os.getenv("SERPAPI_KEY")
 
 BASE_QUERY = (
-    "machine learning OR artificial intelligence OR deep learning OR LLM OR large language model OR GPT OR NLP OR "
-    "natural language processing OR quantum computing OR generative AI OR ML algorithms OR reinforcement learning OR transformers"
+    "machine learning OR artificial intelligence OR AI OR deep learning OR neural networks OR transformers OR LLM OR "
+    "large language model OR generative AI OR GPT OR BERT OR NLP OR natural language processing OR computer vision OR "
+    "image recognition OR video understanding OR video captioning OR video classification OR speech recognition OR "
+    "audio processing OR reinforcement learning OR RLHF OR supervised learning OR unsupervised learning OR self-supervised learning OR "
+    "few-shot learning OR zero-shot learning OR transfer learning OR meta-learning OR continual learning OR online learning OR "
+    "quantum AI OR quantum machine learning OR quantum computing OR tensor networks OR data structures OR algorithms OR "
+    "DSA OR algorithm optimization OR sorting algorithms OR graph neural networks OR GNNs OR diffusion models OR stable diffusion OR "
+    "model compression OR model quantization OR distillation OR pruning OR federated learning OR edge AI OR tinyML OR "
+    "explainable AI OR XAI OR interpretable models OR AI safety OR alignment OR prompt engineering OR fine-tuning OR "
+    "pretraining OR multimodal AI OR vision-language models OR autonomous agents OR autoGPT OR open-source AI OR "
+    "open source models OR MLops OR AIops OR LangChain OR agentic workflows OR synthetic data OR adversarial examples OR "
+    "novel architecture OR SOTA models OR training tricks OR scalability OR distributed training"
 )
+
 
 class DigestGenerator:
     def __init__(self):
@@ -148,11 +159,17 @@ class DigestGenerator:
         ]
         past_items = []
         for file_path in all_data_files:
-            with open(file_path, "r", encoding="utf-8") as f:
-                items = json.load(f)
-                for item in items:
-                    if item["url"] not in self.seen_ids:
+            try:
+                with open(file_path, "r", encoding="utf-8") as f:
+                    items = json.load(f)
+                    for item in items:
+                        if not isinstance(item, dict):
+                            continue  # skip malformed entries
+                        if "url" not in item or item["url"] in self.seen_ids:
+                            continue
                         past_items.append(item)
+            except Exception as e:
+                print(f"⚠️ Failed to read or parse {file_path}: {e}")
 
         if not past_items:
             print("⚠️ No past data available to re-use.")
