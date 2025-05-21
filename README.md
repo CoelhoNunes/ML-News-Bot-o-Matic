@@ -20,7 +20,7 @@ Every 8 hours, I scour Google News and Hugging Face for the **freshest machine l
 ## 🔍 Data Sources
 
 - 📰 **Google News** via [SerpAPI](https://serpapi.com/)
-- 🤗 **Hugging Face** trending models via [Hugging Face API](https://huggingface.co/docs/api)
+- 🤗 **Hugging Face** trending models via [Hugging Face API](https://huggingface.co/docs/inference-providers/en/index)
 
 ---
 
@@ -45,9 +45,8 @@ Every 8 hours, I scour Google News and Hugging Face for the **freshest machine l
    - `research`, `tools`, `model`, `job advice`, etc.
 5. Save results to:
    - `digests/YYYY-MM-DD_HH-mm.md` (Markdown for humans)
-   - `data/YYYY-MM-DD_HH-mm.json` (JSON for machines)
+   - `data/YYYY-MM-DD_HH-mm.json`
 6. Fallback to old unseen records if no new data is found
-7. ✅ Commit the results to GitHub to show contribution activity
 
 ---
 
@@ -63,7 +62,6 @@ Even if there’s no new data, it reuses unseen entries and updates the log.
 Every successful pull:
 - Updates digest files
 - Commits results to `master`
-- Shows green dots on your GitHub graph (daily activity ✅)
 
 ---
 
