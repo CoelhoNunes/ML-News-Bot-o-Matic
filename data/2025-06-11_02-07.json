@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": "2025-06-11_02-07",
+    "source": "MIT News",
+    "title": "Inroads to personalized AI trip planning",
+    "url": "https://news.mit.edu/2025/inroads-personalized-ai-trip-planning-0610",
+    "summary": "Inroads to personalized AI trip",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-06-11_02-07",
+    "source": "Thomson Reuters Legal Solutions",
+    "title": "Reasoning, tool calling, and agentic systems in legal LLMs",
+    "url": "https://legal.thomsonreuters.com/blog/reasoning-tool-calling-and-agentic-systems-in-legal-llms/",
+    "summary": "LLMs are a tool-calling system in the legal system .",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-06-11_02-07",
+    "source": "Cato Institute",
+    "title": "Opportunity Costs of State and Local AI Regulation",
+    "url": "https://www.cato.org/policy-analysis/opportunity-costs-state-local-ai-regulation",
+    "summary": "Opportunity Costs of State and Local AI Regulation are",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-06-11_02-07",
+    "source": "Apple Machine Learning Research",
+    "title": "Updates to Apple's On-Device and Server Foundation Language Models",
+    "url": "https://machinelearning.apple.com/research/apple-foundation-models-2025-updates",
+    "summary": "Updates to Apple's On-Device and Server Foundation Language Models",
+    "tags": [
+      "news"
+    ]
+  },
+  {
+    "timestamp": "2025-06-11_02-07",
+    "source": "Hackster.io",
+    "title": "Apple Opens Access to Its On-Device Large Language Model, Integrates ChatGPT Into Xcode",
+    "url": "https://www.hackster.io/news/apple-opens-access-to-its-on-device-large-language-model-integrates-chatgpt-into-xcode-2abe4c6c5b18",
+    "summary": "Apple Opens Access to Its On-Device Large Language Model, Integrates ChatGPT into X",
+    "tags": [
+      "other"
+    ]
+  }
+]
