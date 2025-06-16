@@ -12,7 +12,7 @@ Every 8 hours, I scour Google News and Hugging Face for the **freshest machine l
 |-----------------|-------------------------------------------|
 | Languages       | Python 3.10, YAML (GitHub Actions)        |
 | Data Formats    | `.md` (digest for humans), `.json` (for machines) |
-| Automation      | GitHub Actions (runs every 8 hours)       |
+| Automation      | GitHub Actions (runs once a day)       |
 | Summarization   | [DistilBART](https://huggingface.co/sshleifer/distilbart-cnn-12-6) from Hugging Face |
 
 ---
@@ -52,7 +52,7 @@ Every 8 hours, I scour Google News and Hugging Face for the **freshest machine l
 
 ## 🔁 Automation
 
-This project runs automatically every 8 hours via GitHub Actions.  
+This project runs automatically every day via GitHub Actions.  
 Even if there’s no new data, it reuses unseen entries and updates the log.
 
 ---
