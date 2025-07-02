@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": "2025-07-02_02-08",
+    "source": "Amazon.com",
+    "title": "Choosing the right approach for generative AI-powered structured data retrieval",
+    "url": "https://aws.amazon.com/blogs/machine-learning/choosing-the-right-approach-for-generative-ai-powered-structured-data-retrieval/",
+    "summary": "Generative AI-powered structured data retrieval can be used to help",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-07-02_02-08",
+    "source": "Nature",
+    "title": "Identifying artificial intelligence-generated content using the DistilBERT transformer and NLP techniques",
+    "url": "https://www.nature.com/articles/s41598-025-08208-7",
+    "summary": "Identifying artificial intelligence-generated content using the DistilBERT transformer and NLP",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-07-02_02-08",
+    "source": "Medium",
+    "title": "Paper Review: ProRL: Prolonged Reinforcement Learning Expands Reasoning Boundaries in Large…",
+    "url": "https://artgor.medium.com/paper-review-prorl-prolonged-reinforcement-learning-expands-reasoning-boundaries-in-large-10693a70ac55",
+    "summary": "Paper Review: ProRL: Prolonged Reinforcement Learning Expands Reasoning Boundaries in Large",
+    "tags": [
+      "research"
+    ]
+  },
+  {
+    "timestamp": "2025-07-02_02-08",
+    "source": "Live Science",
+    "title": "Threaten an AI chatbot and it will lie, cheat and 'let you die' in an effort to stop you, study warns",
+    "url": "https://www.livescience.com/technology/artificial-intelligence/threaten-an-ai-chatbot-and-it-will-lie-cheat-and-let-you-die-in-an-effort-to-stop-you-study-warns",
+    "summary": "Threaten an AI chatbot and it will lie, cheat and 'let you die' in an effort to stop you, study warns",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-07-02_02-08",
+    "source": "Amazon.com",
+    "title": "Build and deploy AI inference workflows with new enhancements to the Amazon SageMaker Python SDK",
+    "url": "https://aws.amazon.com/blogs/machine-learning/build-and-deploy-ai-inference-workflows-with-new-enhancements-to-the-amazon-sagemaker-python-sdk/",
+    "summary": "Amazon SageMaker Python SDK has new enhancements to the Python Python SDK . Build and",
+    "tags": [
+      "other"
+    ]
+  }
+]
