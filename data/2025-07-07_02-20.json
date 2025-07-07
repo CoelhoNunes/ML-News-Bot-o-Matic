@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": "2025-07-07_02-20",
+    "source": "ai-scholar.tech",
+    "title": "Semantics-Oriented Reward Design with \"PrefBERT,\" a New Evaluation Method to Evolve Long Sentence Generation",
+    "url": "https://ai-scholar.tech/en/articles/llm-paper%2FPrefBERT",
+    "summary": "Semantics-Oriented Reward Design with \"PrefBERT,\" a New Evaluation Method to Evolve Long Sentence",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-07-07_02-20",
+    "source": "ai-scholar.tech",
+    "title": "A New Wave of Multispeaker Speech Recognition! The Challenge of High Accuracy Systems by DiCoW and DiariZen",
+    "url": "https://ai-scholar.tech/en/articles/llm-paper%2Fdicow-diarizen",
+    "summary": "A New Wave of Multispeaker Speech Recognition! The Challenge of High Accuracy Systems by DiCoW and Diari",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-07-07_02-20",
+    "source": "ai-scholar.tech",
+    "title": "GenRecal, a general-purpose distillation framework for lightweight, high-performance distillation",
+    "url": "https://ai-scholar.tech/en/articles/llm-paper%2Fgenrecal",
+    "summary": "GenRecal is a general-purpose distillation framework for lightweight, high-performance dist",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-07-07_02-20",
+    "source": "ai-scholar.tech",
+    "title": "UnifiedCrawl: A New Approach to Low-Resource Language Data Collection and Efficient LLM Adaptation",
+    "url": "https://ai-scholar.tech/en/articles/others%2Funifiedcrawl",
+    "summary": "UnifiedCrawl: A New Approach to Low-Resource Language Data Collection and Efficient LLM Adaptation",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-07-07_02-20",
+    "source": "ai-scholar.tech",
+    "title": "A proposal for mixed-first optimization that revolutionizes the inference performance of multimodal LLMs!",
+    "url": "https://ai-scholar.tech/en/articles/llm-paper%2Fpreference-guided-reasoning",
+    "summary": "A proposal for mixed-first optimization that revolutionizes the inference performance of multimodal LLMs",
+    "tags": [
+      "other"
+    ]
+  }
+]
