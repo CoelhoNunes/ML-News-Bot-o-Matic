@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": "2025-07-22_02-21",
+    "source": "The Hacker News",
+    "title": "Assessing the Role of AI in Zero Trust",
+    "url": "https://thehackernews.com/2025/07/assessing-role-of-ai-in-zero-trust.html",
+    "summary": "Assessing the Role of AI in Zero",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-07-22_02-21",
+    "source": "KDnuggets",
+    "title": "10 GitHub Repositories for Machine Learning Projects",
+    "url": "https://www.kdnuggets.com/10-github-repositories-for-machine-learning-projects",
+    "summary": "10 GitHub Repositories for Machine Learning",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-07-22_02-21",
+    "source": "Stanford HAI",
+    "title": "WikiChat: Stopping the Hallucination of Large Language Model Chatbots by Few-Shot Grounding on Wikipedia",
+    "url": "https://hai.stanford.edu/research/wikichat-stopping-the-hallucination-of-large-language-model-chatbots-by-few-shot-grounding-on-wikipedia",
+    "summary": "WikiChat: Stopping the Hallucination of Large Language Model Chatbots by Few-Shot Grounding on",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-07-22_02-21",
+    "source": "Oracle",
+    "title": "AI vs. GenAI vs. ML: What You Need to Know",
+    "url": "https://www.oracle.com/artificial-intelligence/ai-vs-gen-ai-vs-ml/",
+    "summary": "AI vs. AI: What you need to know about AI and",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-07-22_02-21",
+    "source": "Amazon Web Services",
+    "title": "Reducing hallucinations in large language models with custom intervention using Amazon Bedrock Agents",
+    "url": "https://aws.amazon.com/blogs/machine-learning/reducing-hallucinations-in-large-language-models-with-custom-intervention-using-amazon-bedrock-agents/",
+    "summary": "Amazon Bedrock Agents reduce hallucinations in large language models with custom intervention using",
+    "tags": [
+      "other"
+    ]
+  }
+]
