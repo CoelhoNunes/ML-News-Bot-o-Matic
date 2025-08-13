@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": "2025-08-13_02-09",
+    "source": "Illinois News Bureau",
+    "title": "Illinois information sciences researchers develop AI safety testing methods",
+    "url": "https://news.illinois.edu/illinois-information-sciences-researchers-develop-ai-safety-testing-methods/",
+    "summary": "Illinois information sciences researchers develop AI safety testing methods",
+    "tags": [
+      "research"
+    ]
+  },
+  {
+    "timestamp": "2025-08-13_02-09",
+    "source": "MarkTechPost",
+    "title": "NVIDIA AI Releases ProRLv2: Advancing Reasoning in Language Models with Extended Reinforcement Learning RL",
+    "url": "https://www.marktechpost.com/2025/08/12/nvidia-ai-releases-prorlv2-advancing-reasoning-in-language-models-with-extended-reinforcement-learning-rl/",
+    "summary": "NVIDIA AI releases ProRLv2: Advancing Reasoning in Language Models with Extended Reinforcement Learning",
+    "tags": [
+      "news"
+    ]
+  },
+  {
+    "timestamp": "2025-08-13_02-09",
+    "source": "Amazon Web Services",
+    "title": "Fine-tune OpenAI GPT-OSS models on Amazon SageMaker AI using Hugging Face libraries",
+    "url": "https://aws.amazon.com/blogs/machine-learning/fine-tune-openai-gpt-oss-models-on-amazon-sagemaker-ai-using-hugging-face-libraries/",
+    "summary": "Fine-tune OpenAI GPT-OSS models on Amazon SageMaker AI using Hugging Face",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-08-13_02-09",
+    "source": "24-7 Press Release Newswire",
+    "title": "Marquis Who's Who Honors Heather Spetalnick for Expertise in AI and Software Engineering",
+    "url": "https://www.24-7pressrelease.com/press-release/525769/marquis-whos-who-honors-heather-spetalnick-for-expertise-in-ai-and-software-engineering",
+    "summary": "Marquis Who's Who Honors Heather Spetalnick for Expertise in AI and Software Engineering",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-08-13_02-09",
+    "source": "nature.com",
+    "title": "High-level visual representations in the human brain are aligned with large language models",
+    "url": "https://www.nature.com/articles/s42256-025-01072-0",
+    "summary": "High-level visual representations in the human brain are aligned with large language",
+    "tags": [
+      "other"
+    ]
+  }
+]
