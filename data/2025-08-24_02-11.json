@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": "2025-08-24_02-11",
+    "source": "Amazon Web Services",
+    "title": "Enhance AI agents using predictive ML models with Amazon SageMaker AI and Model Context Protocol (MCP)",
+    "url": "https://aws.amazon.com/blogs/machine-learning/enhance-ai-agents-using-predictive-ml-models-with-amazon-sagemaker-ai-and-model-context-protocol-mcp/",
+    "summary": "Amazon SageMaker AI and Model Context Protocol (MCP) are the latest tools to enhance AI agents",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-08-24_02-11",
+    "source": "MarkTechPost",
+    "title": "Large Language Models LLMs vs. Small Language Models SLMs for Financial Institutions: A 2025 Practical Enterprise AI Guide",
+    "url": "https://www.marktechpost.com/2025/08/23/large-language-models-llms-vs-small-language-models-slms-for-financial-institutions-a-2025-practical-enterprise-ai-guide/",
+    "summary": "Large Language Models LLMs vs. Small Language Models SLMs for Financial Institutions: A 2025 Practical Enterprise AI",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-08-24_02-11",
+    "source": "Apple Machine Learning Research",
+    "title": "UICoder: Finetuning Large Language Models to Generate User Interface Code through Automated Feedback",
+    "url": "https://machinelearning.apple.com/research/uicoder",
+    "summary": "UICoder: Finetuning Large Language Models to Generate User Interface Code through Automated",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-08-24_02-11",
+    "source": "Frontiers",
+    "title": "Gender and content bias in Large Language Models: a case study on Google Gemini 2.0 Flash Experimental",
+    "url": "https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2025.1558696/full",
+    "summary": "Gender and content bias in Large Language Models is a case study on Google Gemini 2.0 Flash",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-08-24_02-11",
+    "source": "Nature",
+    "title": "DeepMind and OpenAI models solve maths problems at level of top students",
+    "url": "https://www.nature.com/articles/d41586-025-02343-x",
+    "summary": "DeepMind and OpenAI models solve maths problems at level of top",
+    "tags": [
+      "other"
+    ]
+  }
+]
