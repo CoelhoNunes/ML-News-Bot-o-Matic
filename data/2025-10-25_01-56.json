@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": "2025-10-25_01-56",
+    "source": "Inside Precision Medicine",
+    "title": "Seeing What Can’t Be Seen",
+    "url": "https://www.insideprecisionmedicine.com/topics/informatics/seeing-what-cant-be-seen/",
+    "summary": "Seeing What Can’t Be",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-10-25_01-56",
+    "source": "The AI Journal",
+    "title": "Python for AI Development: Frameworks, Tools & Tips",
+    "url": "https://aijourn.com/python-for-ai-development-frameworks-tools-tips/",
+    "summary": "Python for AI Development: Frameworks, Tools &",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-10-25_01-56",
+    "source": "Frontiers",
+    "title": "Bridging neuroscience and AI: a survey on large language models for neurological signal interpretation",
+    "url": "https://www.frontiersin.org/journals/neuroinformatics/articles/10.3389/fninf.2025.1561401/full",
+    "summary": "A survey on large language models for neurological signal interpretation has been conducted by neuroscient",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-10-25_01-56",
+    "source": "VentureBeat",
+    "title": "Beyond static AI: MIT's new framework lets models teach themselves",
+    "url": "https://venturebeat.com/ai/beyond-static-ai-mits-new-framework-lets-models-teach-themselves",
+    "summary": "MIT's new framework lets models teach themselves how to learn",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-10-25_01-56",
+    "source": "Amazon Web Services",
+    "title": "How NetoAI trained a Telecom-specific large language model using Amazon SageMaker and AWS Trainium",
+    "url": "https://aws.amazon.com/blogs/industries/how-netoai-trained-a-telecom-specific-large-language-model-using-amazon-sagemaker-and-aws-trainium/",
+    "summary": "NetoAI trained a Telecom-specific large language model using Amazon SageMaker and AWS Trainium",
+    "tags": [
+      "other"
+    ]
+  }
+]
