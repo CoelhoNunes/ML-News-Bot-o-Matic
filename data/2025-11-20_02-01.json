@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": "2025-11-20_02-01",
+    "source": "NVIDIA Developer",
+    "title": "Breaking Through Reinforcement Learning Training Limits with Scaling Rollouts in BroRL",
+    "url": "https://developer.nvidia.com/blog/breaking-through-rl-training-limits-with-scaling-rollouts-in-brorl/",
+    "summary": "Breaking Through Reinforcement Learning Training Limits with Scaling Rollouts in Bro",
+    "tags": [
+      "news"
+    ]
+  },
+  {
+    "timestamp": "2025-11-20_02-01",
+    "source": "VentureBeat",
+    "title": "Meta’s DreamGym framework trains AI agents in a simulated world to cut reinforcement learning costs",
+    "url": "https://venturebeat.com/ai/metas-dreamgym-framework-trains-ai-agents-in-a-simulated-world-to-cut",
+    "summary": "Meta’s DreamGym framework trains AI agents in a simulated world to cut reinforcement learning",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-11-20_02-01",
+    "source": "Shacknews",
+    "title": "Facebook (META) chief AI scientist Yann LeCun leaves company to open new AMI start-up",
+    "url": "https://www.shacknews.com/article/146905/facebook-meta-yann-lecun-ai-start-up",
+    "summary": "Facebook (META) chief AI scientist Yann LeCun leaves company to open new AMI start-",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-11-20_02-01",
+    "source": "InfoWorld",
+    "title": "10 JavaScript-based tools and frameworks for AI and machine learning",
+    "url": "https://www.infoworld.com/article/4086893/10-javascript-based-tools-and-frameworks-for-ai-and-machine-learning.html",
+    "summary": "10 JavaScript-based tools and frameworks for AI and machine",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-11-20_02-01",
+    "source": "Bioengineer.org",
+    "title": "Shared Brainspace Enhances Alignment with Language Models",
+    "url": "https://bioengineer.org/shared-brainspace-enhances-alignment-with-language-models/",
+    "summary": "Shared Brainspace Enhances Alignment with Language Models",
+    "tags": [
+      "other"
+    ]
+  }
+]
