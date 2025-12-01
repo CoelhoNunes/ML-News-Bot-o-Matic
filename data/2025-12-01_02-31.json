@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": "2025-12-01_02-31",
+    "source": "Google Research",
+    "title": "Google at NeurIPS 2025",
+    "url": "https://research.google/conferences-and-events/google-at-neurips-2025/",
+    "summary": "Google at NeurIPS",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-12-01_02-31",
+    "source": "Nature",
+    "title": "Densing law of LLMs",
+    "url": "https://www.nature.com/articles/s42256-025-01137-0",
+    "summary": "Densing law of LL",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-12-01_02-31",
+    "source": "Nature",
+    "title": "Leveraging ChatGPT and explainable AI for enhancing clinical decision support",
+    "url": "https://www.nature.com/articles/s41598-025-22784-8",
+    "summary": "ChatGPT and explainable AI for enhancing clinical decision support . Chat",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-12-01_02-31",
+    "source": "Apple Machine Learning Research",
+    "title": "The “Super Weight:” How Even a Single Parameter can Determine a Large Language Model’s Behavior",
+    "url": "https://machinelearning.apple.com/research/the-super-weight",
+    "summary": "The “Super Weight:” How Even a Single Parameter can Determine a Large Language Model’s",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-12-01_02-31",
+    "source": "KDnuggets",
+    "title": "The 5 FREE Must-Read Books for Every LLM Engineer",
+    "url": "https://www.kdnuggets.com/the-5-free-must-read-books-for-every-llm-engineer",
+    "summary": "The 5 FREE Must-Read Books for Every LLM",
+    "tags": [
+      "other"
+    ]
+  }
+]
