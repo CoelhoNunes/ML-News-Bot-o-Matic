@@ -1,0 +1,22 @@
+[
+  {
+    "timestamp": "2025-12-26_02-10",
+    "source": "San Diego Business Journal",
+    "title": "Grossmont Launches Applied AI Degree",
+    "url": "https://www.sdbj.com/education/colleges-universites/grossmont-launches-applied-ai-degree/",
+    "summary": "Grossmont Launches Applied AI Degree",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2025-12-26_02-10",
+    "source": "AI at Meta",
+    "title": "DINOv3: Self-supervised learning for vision at unprecedented scale",
+    "url": "https://ai.meta.com/blog/dinov3-self-supervised-vision-model/",
+    "summary": "DINOv3: Self-supervised learning for vision at unprecedented",
+    "tags": [
+      "other"
+    ]
+  }
+]
