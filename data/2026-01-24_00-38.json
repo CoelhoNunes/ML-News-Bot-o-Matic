@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": "2026-01-24_00-38",
+    "source": "Amazon Web Services (AWS)",
+    "title": "How the Amazon.com Catalog Team built self-learning generative AI at scale with Amazon Bedrock",
+    "url": "https://aws.amazon.com/blogs/machine-learning/how-the-amazon-com-catalog-team-built-self-learning-generative-ai-at-scale-with-amazon-bedrock/",
+    "summary": "Amazon.com Catalog Team built self-learning generative AI at scale with Amazon Bedrock .",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2026-01-24_00-38",
+    "source": "Chemistry World",
+    "title": "AI research tools benefit individual scientists but may slow scientific progress",
+    "url": "https://www.chemistryworld.com/news/ai-research-tools-benefit-individual-scientists-but-may-slow-scientific-progress/4022803.article",
+    "summary": "AI research tools benefit individual scientists but may slow scientific",
+    "tags": [
+      "research"
+    ]
+  },
+  {
+    "timestamp": "2026-01-24_00-38",
+    "source": "Gizmodo",
+    "title": "AI Agents Are Poised to Hit a Mathematical Wall, Study Finds",
+    "url": "https://gizmodo.com/ai-agents-are-poised-to-hit-a-mathematical-wall-study-finds-2000713493",
+    "summary": "AI Agents are Poised to Hit a Mathematical Wall, Study finds",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2026-01-24_00-38",
+    "source": "The Debrief",
+    "title": "Researchers Discover AI Language Models Are Mirroring the Human Brain’s Understanding of Speech",
+    "url": "https://thedebrief.org/researchers-discover-ai-language-models-are-mirroring-the-human-brains-understanding-of-speech/",
+    "summary": "Researchers Discover AI Language Models are Mirroring the Human Brain’s Understanding of",
+    "tags": [
+      "research"
+    ]
+  },
+  {
+    "timestamp": "2026-01-24_00-38",
+    "source": "Scale AI",
+    "title": "Training and Building Machine Learning Models",
+    "url": "https://scale.com/guides/model-training-building",
+    "summary": "Training and Building Machine Learning",
+    "tags": [
+      "other"
+    ]
+  }
+]
