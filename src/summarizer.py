@@ -1,7 +1,8 @@
 # src/summarizer.py
 
 import logging
-from transformers import pipeline, AutoTokenizer
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+from transformers.pipelines import SummarizationPipeline
 import torch
 
 logging.getLogger("transformers").setLevel(logging.ERROR)
@@ -10,9 +11,10 @@ class Summarizer:
     def __init__(self):
         model_name = "sshleifer/distilbart-cnn-12-6"
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+        model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
         device = 0 if torch.cuda.is_available() else -1
-        self.summarizer = pipeline(
-            model=model_name,
+        self.summarizer = SummarizationPipeline(
+            model=model,
             tokenizer=self.tokenizer,
             device=device
         )
