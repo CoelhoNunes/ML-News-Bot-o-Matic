@@ -12,7 +12,6 @@ class Summarizer:
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         device = 0 if torch.cuda.is_available() else -1
         self.summarizer = pipeline(
-            "summarization",
             model=model_name,
             tokenizer=self.tokenizer,
             device=device
