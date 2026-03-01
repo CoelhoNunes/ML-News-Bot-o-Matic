@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": "2026-03-01_00-52",
+    "source": "MIT News",
+    "title": "New method could increase LLM training efficiency",
+    "url": "https://news.mit.edu/2026/new-method-could-increase-llm-training-efficiency-0226",
+    "summary": "New method could increase LLM training",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2026-03-01_00-52",
+    "source": "CleanTechnica",
+    "title": "World Models, Free Energy, and a Plastic Dinosaur",
+    "url": "https://cleantechnica.com/2026/02/28/world-models-free-energy-and-a-plastic-dinosaur/",
+    "summary": "World Models, Free Energy, and a Plastic",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2026-03-01_00-52",
+    "source": "Amazon Web Services (AWS)",
+    "title": "Efficiently serve dozens of fine-tuned models with vLLM on Amazon SageMaker AI and Amazon Bedrock",
+    "url": "https://aws.amazon.com/blogs/machine-learning/efficiently-serve-dozens-of-fine-tuned-models-with-vllm-on-amazon-sagemaker-ai-and-amazon-bedrock/",
+    "summary": "vLLM is available on Amazon SageMaker AI and Amazon Bedrock . It lets you serve dozens of fine-",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2026-03-01_00-52",
+    "source": "vocal.media",
+    "title": "The Mind of the Machine: Inside the World of Generative AI",
+    "url": "https://vocal.media/futurism/the-mind-of-the-machine-inside-the-world-of-generative-ai",
+    "summary": "The Mind of the Machine: Inside the World of Generative",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2026-03-01_00-52",
+    "source": "The Express Tribune",
+    "title": "PewDiePie details DIY AI project that he claims rivaled ChatGPT on coding tests",
+    "url": "https://tribune.com.pk/story/2595047/pewdiepie-details-diy-ai-project-that-he-claims-rivaled-chatgpt-on-coding-tests",
+    "summary": "PewDiePie details DIY AI project that he claims rivaled ChatGPT on coding",
+    "tags": [
+      "other"
+    ]
+  }
+]
