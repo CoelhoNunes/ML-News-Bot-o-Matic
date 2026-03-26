@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": "2026-03-26_02-57",
+    "source": "KDnuggets",
+    "title": "An AI Data analyst that analyzes data and outputs predictions",
+    "url": "https://www.kdnuggets.com/vibe-coding-a-private-ai-financial-analyst-with-python-and-local-llms",
+    "summary": "AI Data analyst that analyzes data and outputs predictions",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26_02-57",
+    "source": "MarkTechPost",
+    "title": "This AI Paper Introduces TinyLoRA, A 13-Parameter Fine-Tuning Method That Reaches 91.8 Percent GSM8K on Qwen2.5-7B",
+    "url": "https://www.marktechpost.com/2026/03/24/this-ai-paper-introduces-tinylora-a-13-parameter-fine-tuning-method-that-reaches-91-8-percent-gsm8k-on-qwen2-5-7b/",
+    "summary": "This AI Paper Introduces TinyLoRA, a 13-parameter Fine-Tuning Method that Reaches 91.8 percent GSM8K on Qwen2.5-",
+    "tags": [
+      "research"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26_02-57",
+    "source": "Nature",
+    "title": "Large language models versus classical machine learning performance in COVID-19 mortality prediction using high-dimensional tabular data",
+    "url": "https://www.nature.com/articles/s41598-025-26705-7",
+    "summary": "Large language models versus classical machine learning performance in COVID-19 mortality prediction using high-dimensional tabular",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26_02-57",
+    "source": "Towards Data Science",
+    "title": "How Vision Language Models Are Trained from “Scratch”",
+    "url": "https://towardsdatascience.com/how-vision-language-models-are-trained-from-scratch/",
+    "summary": "How Vision Language Models are Trained from “Scratch�",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26_02-57",
+    "source": "AIMultiple",
+    "title": "Top 20+ AI Chip Makers: NVIDIA & Its Competitors",
+    "url": "https://aimultiple.com/ai-chip-makers",
+    "summary": "Top 20+ AI chip makers: NVIDIA & Its Competitors",
+    "tags": [
+      "other"
+    ]
+  }
+]
