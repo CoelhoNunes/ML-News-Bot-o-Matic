@@ -1,0 +1,42 @@
+[
+  {
+    "timestamp": "2026-05-08_01-03",
+    "source": "Amazon Web Services (AWS)",
+    "title": "Overcoming reward signal challenges: Verifiable rewards-based reinforcement learning with GRPO on SageMaker AI",
+    "url": "https://aws.amazon.com/blogs/machine-learning/overcoming-reward-signal-challenges-verifiable-rewards-based-reinforcement-learning-with-grpo-on-sagemaker-ai/",
+    "summary": "SageMaker AI uses rewards-based reinforcement learning with GRPO on SageMaker . SageMaker's",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2026-05-08_01-03",
+    "source": "Nature",
+    "title": "Accelerating clinical evidence synthesis with large language models - npj Digital Medicine",
+    "url": "https://www.nature.com/articles/s41746-025-01840-7",
+    "summary": "Accelerating clinical evidence synthesis with large language models - npj Digital",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2026-05-08_01-03",
+    "source": "Towards Data Science",
+    "title": "The AI Bubble Has a Data Science Escape Hatch",
+    "url": "https://towardsdatascience.com/the-ai-bubble-has-a-data-science-escape-hatch/",
+    "summary": "The AI bubble has a Data Science escape",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2026-05-08_01-03",
+    "source": "TechRepublic",
+    "title": "Want AI Skills Without the Big Price Tag? These 2026 Certifications Deliver Value",
+    "url": "https://www.techrepublic.com/article/news-free-low-cost-ai-certifications-2026/",
+    "summary": "Want AI skills without the big price tag? These 2026 Certifications Deliver",
+    "tags": [
+      "other"
+    ]
+  }
+]
