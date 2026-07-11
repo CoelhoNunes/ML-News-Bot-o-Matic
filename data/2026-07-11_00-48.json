@@ -1,0 +1,42 @@
+[
+  {
+    "timestamp": "2026-07-11_00-48",
+    "source": "Towards Data Science",
+    "title": "RAG Was Always a Temporary Workaround. What is Next?",
+    "url": "https://towardsdatascience.com/rag-was-always-a-temporary-workaround-what-is-next/",
+    "summary": "RAG Was Always a Temporary Workaround. What is Next",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2026-07-11_00-48",
+    "source": "매일경제",
+    "title": "Krafton announced on the 10th that 10 of the papers published in ICML (International Conference on M..",
+    "url": "https://www.mk.co.kr/en/it/12095367",
+    "summary": "Krafton announced on the 10th that 10 of the papers published in ICML (International Conference on M..",
+    "tags": [
+      "research"
+    ]
+  },
+  {
+    "timestamp": "2026-07-11_00-48",
+    "source": "Frontiers",
+    "title": "Private speech: similarities between a large language model and children",
+    "url": "https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2026.1691074/full",
+    "summary": "Private speech: similarities between a large language model and",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2026-07-11_00-48",
+    "source": "Amazon Web Services (AWS)",
+    "title": "Scale LLM fine-tuning with Hugging Face and Amazon SageMaker AI",
+    "url": "https://aws.amazon.com/blogs/machine-learning/scale-llm-fine-tuning-with-hugging-face-and-amazon-sagemaker-ai/",
+    "summary": "Scale LLM fine-tuning with Hugging Face and Amazon SageMaker",
+    "tags": [
+      "other"
+    ]
+  }
+]
