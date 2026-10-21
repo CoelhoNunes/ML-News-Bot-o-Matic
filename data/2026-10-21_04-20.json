@@ -1,0 +1,64 @@
+[
+  {
+    "timestamp": "2026-10-21_04-20",
+    "source": "Amazon Web Services (AWS)",
+    "title": "Beyond the KV cache: Training and serving i14’s Laplace 3B linear attention model on AWS Trainium2 with native PyTorch",
+    "url": "https://aws.amazon.com/blogs/machine-learning/beyond-the-kv-cache-training-and-serving-i14s-laplace-3b-linear-attention-model-on-aws-trainium2-with-native-pytorch/",
+    "summary": "Beyond the KV cache: Training and serving i14’s Laplace 3B linear attention model on AWS Trainium2 with native PyTor",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2026-10-21_04-20",
+    "source": "MIT News",
+    "title": "Giving AI a “crystal clear” view of the materials world",
+    "url": "https://news.mit.edu/2026/giving-ai-crystal-clear-view-of-materials-world-1018",
+    "summary": "Giving AI a “crystal clear” view of the materials",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2026-10-21_04-20",
+    "source": "shattered.io",
+    "title": "GoTo’s 27B AI Model Targets 5 Indonesian Languages [2026]",
+    "url": "https://shattered.io/goto-27b-ai-model-indonesian-languages-2026/",
+    "summary": "GoTo’s 27B AI Model Targets 5 Indonesian Languages [2026",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2026-10-21_04-20",
+    "source": "Bioengineer.org",
+    "title": "Weighted Training Improves AI Robustness to Spurious Correlations",
+    "url": "https://bioengineer.org/weighted-training-improves-ai-robustness-to-spurious-correlations/",
+    "summary": "Weighted Training Improves AI Robustness to Spurious Cor",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2026-10-21_04-20",
+    "source": "OpenAI",
+    "title": "An Alien Mind",
+    "url": "https://openai.com/index/an-alien-mind/",
+    "summary": "An Alien",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "timestamp": "2026-10-21_04-20",
+    "source": "Hugging Face",
+    "title": "Lightricks/LTX-2.5",
+    "url": "https://huggingface.co/Lightricks/LTX-2.5",
+    "summary": "🔥 Pipeline: image-to-video\n⬇️ Downloads: 2039447\n🕒 Last updated: Unknown",
+    "tags": [
+      "huggingface",
+      "model",
+      "image-to-video"
+    ]
+  }
+]
